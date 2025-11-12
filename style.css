@@ -1,0 +1,674 @@
+/* General Body Styles */ 
+body { 
+    font-family: sans-serif; 
+    margin: 0; 
+    padding: 20px; 
+
+    /* --- Add these lines for the background --- */
+    background-image: url('BG.png');
+    background-size: cover; /* This makes the image cover the entire screen */
+    background-position: center center; /* This centers the image */
+    background-repeat: no-repeat; /* This prevents the image from tiling */
+    background-attachment: fixed; /* This makes the background stay in place when you scroll */
+    background-color: #f4f4f4; /* A fallback color in case the image doesn't load */
+}
+
+.wardrobe-container {
+    margin-left: 9%;
+    margin-right: 10%;
+}
+
+.empty-wardrobe-image {
+    display: block;
+    margin: 50px auto;
+    max-width: 400px;
+    opacity: 0.7;
+    /* Center the image */
+    background-position: center center;
+}
+
+.add-btn-not-yet{
+    display: block;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    color: #f5f5f5;
+    text-align: center;
+    text-decoration: none;
+    background: #4eb053;
+    box-shadow: 0 0 3px gray;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 30px auto;
+    cursor: pointer; /* Good to add for buttons */
+    transition: all 0.2s ease-in-out; /* Smooths the hover transition */
+}
+
+/* Edit Item Page Styles */
+.edit-container {
+    display: flex;
+    gap: 40px;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Añade esta nueva regla para el contenedor del título --- */
+.item-title-header {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el título y el lápiz */
+    gap: 15px;           /* Crea un espacio entre ellos */
+    margin-bottom: 20px; /* Añade espacio debajo del título */
+}
+
+/* --- Añade esta nueva regla para el contenedor del título --- */
+.item-title-header {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el título y el lápiz */
+    gap: 15px;           /* Crea un espacio entre ellos */
+    margin-bottom: 20px; /* Añade espacio debajo del título */
+}
+
+.edit-pencil:hover {
+    color: #007bff;
+}
+
+#item-name {
+    margin: 0; /* Elimina el margen por defecto del h1 */
+}
+
+.wardrobe-item img {
+    /* --- CHANGE THESE LINES --- */
+    width: 80%;  /* Was 256px */
+    height: 80%; /* Was 256px */
+    margin-top: 8%;
+
+    /* --- Keep these lines the same --- */
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: #eee;
+    align-items: center;
+    margin-left: 10%;
+}
+
+/* This styles the name (<p>) inside the item card */
+.wardrobe-item p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 5px 0; /* Reduced padding to bring it closer */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: white !important; /* Forces the text to be white, overriding link color */
+    font-weight: bold; /* Ensures the text is bold */
+    text-align: center; /* Centers the text */
+    opacity: 0;
+}
+
+.wardrobe-item:hover p {
+    opacity: 1;
+    transform: scale(1.05); 
+}
+
+/* Make the wardrobe item a positioning container */
+.wardrobe-item {
+    aspect-ratio: 1 / 1; /* For square images, adjust if needed */
+    background-image: url('ItemBG.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+
+/* Style the delete 'X' button */
+.delete-btn {
+    position: absolute;
+    top: 2%;
+    right: 8%;
+    width: 28px;
+    height: 28px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 26px; /* Helps center the 'X' vertically */
+    text-align: center;
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.2s ease-in-out;
+}
+
+.wardrobe-item:hover .delete-btn {
+    opacity: 1;
+}
+
+.wardrobe-item:hover { 
+    transform: scale(1.05); 
+} 
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px 35px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Utility class to hide elements */
+.hidden {
+    display: none;
+}
+
+.item-detail-container {
+    display: flex;
+    gap: 40px; /* Increased the gap to give the larger photos space */
+    max-width: 1100px; /* Increased max-width to better fit the content */
+    margin: 60px auto 20px auto; /* Added top margin to not overlap with the arrow */
+    padding: 20px;
+    position: relative; /* This is important for positioning the back arrow */
+}
+
+.thumbnail-images {
+    display: flex;
+    gap: 15px; /* Increased gap for larger thumbnails */
+    margin-top: 15px;
+    flex-wrap: wrap; /* Allows thumbnails to wrap onto the next line if needed */
+}
+
+.thumbnail-images img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+
+.thumbnail-images img:hover {
+    border-color: #007bff; /* Adds a nice hover effect */
+}
+
+#main-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover; /* Ensures the image fills the space without distortion */
+    border-radius: 8px;
+    background-color: #eee; /* Placeholder color */
+    flex-shrink: 0; /* Prevents the image from shrinking */
+}
+
+.wardrobe-grid {
+    display: grid;
+    /* Adjust the minimum width to match your image size */
+    grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+    gap: 20px;
+}
+
+.home {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 2.5rem; /* Makes the arrow large and easy to click */
+    font-weight: bold;
+    text-decoration: none;
+    color: #e4e4e4;
+}
+
+.home:hover {
+    color: #007bff;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.form-column label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-column input[type="text"],
+.form-column input[type="number"],
+.form-column input[type="date"],
+.form-column select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.photo-section {
+    margin-bottom: 20px;
+}
+
+.photo-upload-main .photo-box {
+    width: 100%;
+    height: 250px;
+    border: 2px dashed #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #ccc;
+    cursor: pointer;
+    /* --- CAMBIOS AQUÍ --- */
+    background-size: contain;   /* <- Esta es la solución */
+    background-repeat: no-repeat; /* Evita que la imagen se repita si es pequeña */
+    background-position: center;
+}
+
+.photo-thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.photo-thumbnails .photo-box.small {
+    width: 80px;
+    height: 80px;
+    font-size: 24px;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.price-section input {
+    width: 100px;
+}
+
+.main-header {
+    position: relative;
+    display: flex;
+    /* CHANGE justify-content to space-between */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    height: 80px; 
+}
+
+#logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* The classic centering trick */
+    height: 60px; /* You can adjust the height of your logo */
+    width: auto;  /* Maintains the aspect ratio */
+}
+.io-buttons {
+    display: flex;             /* Activa Flexbox */
+    flex-direction: column;    /* Apila los elementos verticalmente */
+    gap: 8px;                  /* Añade un espacio entre los botones */
+}
+.io-buttons .io-btn {
+    background-color: #5a6268;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+/* Combinations Section */
+.combinations-section {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.combinations-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#combinations-gallery {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.add-combination {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px dashed #ccc;
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.action-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action-buttons button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+#save-item-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+#cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.multi-select-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.multi-select-container select[multiple] {
+    width: 100%;
+    min-height: 100px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.add-new-option {
+    display: flex;
+    gap: 5px;
+}
+
+.add-new-option input {
+    flex-grow: 1;
+}
+
+.add-option-btn {
+    padding: 8px 15px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Header for the 'Possible Fits' section */
+.fits-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.add-fit-button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 35px;
+}
+
+/* Modal sizing and gallery grid */
+.modal-content.large {
+    width: 90%;
+    max-width: 800px;
+}
+
+.fits-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    max-height: 60vh; /* Makes the gallery scrollable if it's too tall */
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.fit-gallery-item {
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.fit-gallery-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block; /* Removes any extra space below the image */
+}
+
+.fit-gallery-item p {
+    font-size: 14px;
+    text-align: center;
+    background: #f8f9fa;
+    padding: 5px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Style for selected items in the gallery */
+.fit-gallery-item.selected {
+    border-color: #007bff;
+}
+
+.fit-gallery-item.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Additional primary button style */
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+/* --- Styles for the 'Possible Fits' Display --- */
+
+.possible-fits-grid {
+    display: grid;
+    /* Create a grid that fits 200px items perfectly */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+/* Style the link container for each fit item */
+.possible-fits-grid .wardrobe-item-link {
+    text-decoration: none;
+    color: inherit; /* Use the default text color */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.possible-fits-grid .wardrobe-item-link:hover {
+    transform: scale(1.05);
+}
+
+/* THE KEY CHANGE: Set the image size to 200x200 */
+.possible-fits-grid .wardrobe-item-link img {
+    width: 100%; /* Make image fill the container's width */
+    height: 200px;
+    object-fit: cover; /* Crop to fit without stretching */
+    border-radius: 4px;
+}
+
+/* Style for the item name below the image */
+.possible-fits-grid .wardrobe-item-link p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* --- Add this new style for the edit pencil icon --- */
+.edit-pencil {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+     font-size: 2.5rem;
+    text-decoration: none;
+    color: #dcdcdc;
+    transition: color 0.2s;
+    z-index: 10;
+}
+
+.edit-pencil:hover {
+    color: #007bff;
+}
+
+/* Add this style to give the combinations label proper styling */
+.fits-header label {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+}
+.add-btn {
+    /* These are your provided styles */
+    display: block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    color: #f5f5f5;
+    text-align: center;
+    text-decoration: none;
+    background: #4eb053;
+    box-shadow: 0 0 3px gray;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer; /* Good to add for buttons */
+    transition: all 0.2s ease-in-out; /* Smooths the hover transition */
+}
+
+.add-btn:hover {
+    border-color: #cccccc;
+    color: #f5f5f5;
+    background: #275718;
+}
+
+/* --- Add these styles for the Image Viewer Modal --- */
+
+/* Make the main image look clickable */
+#main-image {
+    cursor: zoom-in;
+    /* ... other styles remain the same ... */
+}
+
+/* Style for the image inside the modal */
+.image-modal-content {
+    display: block;
+    max-width: 90%;
+    max-height: 90vh; /* vh is viewport height */
+    margin: auto;
+}
+
+/* Style for the close button ('X') */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.thumbnail-images img.active {
+    border-color: #007bff; /* Use the same blue as the hover effect */
+    opacity: 0.6; /* Make it slightly faded to show it's selected */
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="edit-container">
+        <div class="form-column">
+            <div class="photo-section">
+                <label>Photos</label>
+                <div class="photo-upload-main">
+                    <input type="file" id="main-photo-upload" accept="image/*" style="display: none;">
+                    <label for="main-photo-upload" class="photo-box" id="main-photo-box">+</label>
+                </div>
+                <div class="photo-thumbnails">
+                    <input type="file" id="thumb1-upload" accept="image/*" style="display: none;">
+                    <label for="thumb1-upload" class="photo-box small" id="thumb1-box">+</label>
+                    <input type="file" id="thumb2-upload" accept="image/*" style="display: none;">
+                    <label for="thumb2-upload" class="photo-box small" id="thumb2-box">+</label>
+                    <input type="file" id="thumb3-upload" accept="image/*" style="display: none;">
+                    <label for="thumb3-upload" class="photo-box small" id="thumb3-box">+</label>
+                </div>
+            </div>
+            <div class="price-section">
+                <label for="price">Price of Purchase</label>
+                <input type="number" id="price" placeholder="e.g., 29.99">
+            </div>
+        </div>
+        <div class="form-column">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="e.g., Blue Denim Jacket">
+
+            <label for="materials">Materials</label>
+            <div class="multi-select-container">
+                <select id="materials" multiple></select>
+                <div class="add-new-option">
+                    <input type="text" id="new-material" placeholder="Add new material">
+                    <button id="add-material-btn" class="add-option-btn">+</button>
+                </div>
+            </div>
+
+            <label for="vibe">Vibe</label>
+            <div class="multi-select-container">
+                <select id="vibe" multiple></select>
+                <div class="add-new-option">
+                    <input type="text" id="new-vibe" placeholder="Add new vibe">
+                    <button id="add-vibe-btn" class="add-option-btn">+</button>
+                </div>
+            </div>
+
+            <label for="purchase-date">Date of Purchase</label>
+            <input type="date" id="purchase-date">
+
+            <label for="purchase-place">Place of Purchase</label>
+            <input type="text" id="purchase-place" placeholder="e.g., Zara, Online">
+        </div>
+    </div>
+    <div class="combinations-section">
+        <hr>
+        <div class="fits-header">
+            <label>Combinations</label>
+            <button id="add-fit-btn" class="add-fit-button">+</button>
+        </div>
+        <div id="possible-fits" class="possible-fits-grid">
+            <!-- Existing fits will be displayed here -->
+        </div>
+    </div>
+    
+    <div class="action-buttons">
+        <button id="save-item-btn">Save Item</button>
+        <button id="cancel-btn">Cancel</button>
+    </div>
+
+    <script src="edit-item.js"></script>
+
+    <div id="fits-modal" class="modal-overlay hidden">
+        <div class="modal-content large">
+            <h2>Select Items for this Fit</h2>
+            <div id="fits-gallery-grid" class="fits-gallery">
+                <!-- Wardrobe items will be populated here by JavaScript -->
+            </div>
+            <div class="modal-actions">
+                <button id="confirm-fits-btn" class="btn-primary">OK</button>
+                <button id="cancel-fits-btn" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

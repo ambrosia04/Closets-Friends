@@ -1,0 +1,52 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Item Details</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+    <a href="index.html" class="home">🏠︎</a>
+    <a href="#" id="edit-item-btn" class="edit-pencil">&#9998;</a>
+    <div class="item-detail-container"> 
+        <div class="item-images"> 
+            <img id="main-image" src="" alt="Main clothing image"> 
+            <div id="thumbnail-container" class="thumbnail-images"></div> 
+        </div> 
+        <div class="item-info">
+            <h1 id="item-name"></h1>
+            <p><strong>Material:</strong> <span id="item-material"></span></p>
+            <p><strong>Vibe:</strong> <span id="item-vibe"></span></p>
+            <p><strong>Date of Purchase:</strong> <span id="item-purchase-date"></span></p>
+            <p><strong>Place of Purchase:</strong> <span id="item-purchase-place"></span></p>
+            
+            <div class="fits-header">
+                <h2>Possible Fits:</h2>
+                <button id="add-fit-btn" class="add-fit-button">+</button>
+            </div>
+            <div id="possible-fits" class="possible-fits-grid"></div>
+        </div>
+    </div> 
+    <script src="item.js"></script> 
+
+    <!-- ADD THIS MODAL FOR SELECTING FITS -->
+    <div id="fits-modal" class="modal-overlay hidden">
+        <div class="modal-content large">
+            <h2>Select Items for this Fit</h2>
+            <div id="fits-gallery-grid" class="fits-gallery">
+                <!-- Wardrobe items will be populated here by JavaScript -->
+            </div>
+            <div class="modal-actions">
+                <button id="confirm-fits-btn" class="btn-primary">OK</button>
+                <button id="cancel-fits-btn" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="image-viewer-modal" class="modal-overlay hidden">
+        <span class="close-btn">&times;</span>
+        <img class="image-modal-content" id="modal-image">
+    </div>
+</body> 
+</html>
