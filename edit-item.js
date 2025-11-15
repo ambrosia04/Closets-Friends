@@ -248,11 +248,11 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('wardrobeItems', JSON.stringify(wardrobeItems));
             localStorage.removeItem('itemToEditIndex');
             alert(`Item ${isEditMode ? 'updated' : 'saved'} successfully!`);
-            window.location.href = 'index.html';
+            window.location.href = 'wardrobe.html';
         });
         document.getElementById('cancel-btn').addEventListener('click', () => {
             localStorage.removeItem('itemToEditIndex');
-            window.location.href = 'index.html';
+            window.location.href = 'wardrobe.html';
         });
         addFitBtn.addEventListener('click', openFitsModal);
         confirmFitsBtn.addEventListener('click', saveFits);

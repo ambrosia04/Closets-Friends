@@ -672,3 +672,220 @@ body {
     border-color: #007bff; /* Use the same blue as the hover effect */
     opacity: 0.6; /* Make it slightly faded to show it's selected */
 }
+
+/* --- Browse Online Page Styles --- */
+.browse-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.browse-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.browse-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.browse-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.browse-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px burdensome rgba(0,0,0,0.15);
+}
+
+.browse-item-image-container {
+    width: 100%;
+    height: 220px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.browse-item-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.browse-item-info {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.browse-item-title {
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    flex-grow: 1;
+}
+
+.browse-item-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #007bff;
+    margin: 0 0 5px 0;
+}
+
+.browse-item-source {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin: 0;
+}
+
+#load-more-btn {
+    display: block;
+    margin: 40px auto;
+    padding: 12px 30px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 30px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    text-align: center;
+    grid-column: 1 / -1; /* Span all columns */
+}
+
+/* --- Styles for the New Home Page (index.html) --- */
+
+.home-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.home-header {
+    margin-bottom: 50px;
+}
+
+.home-header #logo {
+    /* Overwrite the absolute positioning from the original styles */
+    position: static;
+    transform: none;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.home-header h1 {
+    font-size: 2.2rem;
+    color: #333;
+}
+
+.home-menu {
+    display: grid;
+    gap: 25px;
+}
+
+.menu-button, .menu-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.menu-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.menu-button h2, .menu-section h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: #007bff;
+}
+
+.menu-button p, .menu-section p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.menu-button.disabled {
+    background-color: #f8f9fa;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.menu-button.disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.online-search-form {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.online-search-form input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 40%;
+}
+
+.online-search-form button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.online-search-form button:hover {
+    background-color: #218838;
+}
+
+.online-search-form select {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white; /* Ensures consistent background */
+}

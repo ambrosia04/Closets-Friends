@@ -1,2 +1,7 @@
 # Ignore all folders
-*/
+/node_modules/
+/v1/
+/v2/
+/v3_noGoodDesign/
+/wardrobe-server/.env
+.env

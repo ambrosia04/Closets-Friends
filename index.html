@@ -3,37 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Wardrobe</title>
+    <title>My Wardrobe - Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main-header">
-        <button id="add-item-btn" class="add-btn">+</button>
-       <img src="LOGO.png" alt="Wardrobe Logo" id="logo">
-       <div class="io-buttons">
-            <label for="import-json" class="io-btn">Reload Wardrobe</label>
-            <input type="file" id="import-json" accept=".json" style="display: none;">
-            <button id="export-json" class="io-btn">Save Wardrobe</button>
+    <div class="home-container">
+        <div class="home-header">
+            <img src="LOGO.png" alt="Wardrobe Logo" id="logo">
+            <h1>Welcome to Your Digital Wardrobe</h1>
         </div>
-    </div>
-    
-    <div class="wardrobe-container">
-        <div id="wardrobe" class="wardrobe-grid"></div>
-        <div id="empty-wardrobe-message" class="empty-wardrobe">
-            <img src="NothingYet.png" alt="Empty Wardrobe" class="empty-wardrobe-image">
-            <button id="add-item-btn-empty" class="add-btn-not-yet">+</button>
-        </div>
-    </div>
-    <script src="app.js"></script>
 
-    <div id="delete-confirm-modal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <p>Are you sure you want to delete this item?</p>
-            <div class="modal-actions">
-                <button id="confirm-delete-btn" class="btn-danger">Yes, Delete</button>
-                <button id="cancel-delete-btn" class="btn-secondary">No, Cancel</button>
+        <div class="home-menu">
+            <!-- Option 1: Go to Wardrobe -->
+            <a href="wardrobe.html" class="menu-button">
+                <h2>My Wardrobe</h2>
+                <p>View, edit, and organize your clothing items.</p>
+            </a>
+
+            <!-- Option 2: Search Online -->
+            <div class="menu-section">
+                <h2>Search Online</h2>
+                <p>Find new pieces by style and clothing type.</p>
+                <div class="online-search-form">
+                    <input type="text" id="style-input" placeholder="e.g., Cottagecore, Streetwear">
+                    <input type="text" id="piece-input" placeholder="e.g., Skirt, Jacket">
+                    <select id="who-input">
+                        <option value="Woman" selected>Woman</option>
+                        <option value="Man">Man</option>
+                        <option value="Kid">Kid</option>
+                    </select>
+                    <button id="online-search-btn">Search</button>
+                </div>
+            </div>
+
+            <!-- Option 3: Search in Wardrobe (Placeholder) -->
+            <div class="menu-button disabled">
+                <h2>Search in Wardrobe</h2>
+                <p>Quickly find items you already own. (Coming soon!)</p>
             </div>
         </div>
     </div>
+
+    <script>
+       document.getElementById('online-search-btn').addEventListener('click', () => {
+        // --- NEW: Get the value from the dropdown ---
+        const who = document.getElementById('who-input').value;
+
+        const style = document.getElementById('style-input').value.trim();
+        const piece = document.getElementById('piece-input').value.trim();
+
+        if (!style || !piece) {
+            alert('Please enter both a style and a clothing piece.');
+            return;
+        }
+
+        // --- NEW: Combine "who" and "piece" into one string ---
+        // For example: "Man" + " " + "Jacket" -> "Man Jacket"
+        const combinedPiece = `${who} ${piece}`;
+
+        // Redirect with the combined query. The backend will handle the rest.
+        window.location.href = `browse.html?style=${encodeURIComponent(style)}&piece=${encodeURIComponent(combinedPiece)}`;
+    });
+    </script>
 </body>
 </html>

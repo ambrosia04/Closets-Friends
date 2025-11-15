@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedItemIndex = localStorage.getItem('selectedItemIndex');
     
     if (selectedItemIndex === null || !wardrobeItems[selectedItemIndex]) {
-        document.body.innerHTML = '<h1>Item not found.</h1><a href="index.html">Go back to wardrobe</a>';
+        document.body.innerHTML = '<h1>Item not found.</h1><a href="wardrobe.html">Go back to wardrobe</a>';
         return;
     }
 
@@ -76,6 +76,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 thumbnailContainer.appendChild(thumb);
+            });
+        }
+
+        // =======================================================================
+        // --- NEW: Browse Online Button Logic ---
+        const browseOnlineBtn = document.getElementById('browse-online-btn');
+
+        if (browseOnlineBtn) {
+            browseOnlineBtn.addEventListener('click', () => {
+                const style = currentItem.vibe && currentItem.vibe.length > 0 ? currentItem.vibe[0] : '';
+                const itemName = currentItem.name || '';
+                const nameParts = itemName.split(' ');
+                const clothingPiece = nameParts[nameParts.length - 1];
+
+                if (style && clothingPiece) {
+                    // Navigate to our new browse page with URL parameters
+                    window.location.href = `browse.html?style=${encodeURIComponent(style)}&piece=${encodeURIComponent(clothingPiece)}`;
+                } else {
+                    alert("This item doesn't have a defined style (vibe) or name to search for.");
+                }
             });
         }
 
