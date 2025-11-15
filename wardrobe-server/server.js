@@ -4,7 +4,7 @@ const cors = require('cors');
 const SerpApi = require("google-search-results-nodejs"); 
 
 const app = express();
-const PORT = 3000;
+const PORT =  process.env.PORT || 3000;
 
 const SERPAPI_KEY = process.env.API_KEY; 
 

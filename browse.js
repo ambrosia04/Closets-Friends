@@ -17,8 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
         loadMoreBtn.classList.add('hidden');
 
         try {
-            // Make sure your Node.js server is running on localhost:3000
-            const response = await fetch(`http://localhost:3000/api/browse?style=${style}&piece=${piece}&page=${page}`);
+           // Only this one line needs to be changed
+            const API_URL = 'https://closets-friends.onrender.com';
+
+            async function getWardrobeItems(style, piece) {
+            // The rest of the code stays the same
+            const response = await fetch(`${API_URL}/api/browse?style=${style}&piece=${piece}`);
+            const items = await response.json();
+            return items;
+            }
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
