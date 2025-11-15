@@ -41,16 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         products.forEach(product => {
-            // This is an item from the JSON array sent by your server
-            const itemElement = document.createElement('a');
+            // --- CHANGE 1: Create a <div> instead of an <a> ---
+            const itemElement = document.createElement('div');
             
-            // --- THE FIX IS HERE ---
-            // We ensure it correctly uses product.link (all lowercase)
-            itemElement.href = product.link; 
+            // --- CHANGE 2: Remove the lines that set href and target ---
+            // itemElement.href = product.link;      <-- REMOVED
+            // itemElement.target = '_blank';        <-- REMOVED
             
-            itemElement.target = '_blank'; // Open in a new tab
             itemElement.classList.add('browse-item');
 
+            // The inner content remains exactly the same
             itemElement.innerHTML = `
                 <div class="browse-item-image-container">
                     <img src="${product.imageUrl}" alt="${product.title}" onerror="this.style.display='none'">
